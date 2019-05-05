@@ -1,0 +1,51 @@
+Estudar sobre gerenciamento de erros do servidor
+
+O express da exemplo de códigos de tratamento de erro
+
+-------------------------------------------------------
+
+É importante separar o sevidor das rotas, controller, etc.
+
+-------------------------------------------------------
+
+Configurando o NPM start (para iniciar o servidor sem ficar executando comando com o diretório/nome do arquivo)
+
+- Passar o script: "start" : "node ./bin/server.js" no objeto JSON 'scripts' do package.json
+- Rodar o comando: npm start    para iniciar o servidor
+
+OBS: além desse script pode ser utilizado outros no mesmo objeto 'scripts', que podem ser bastente util
+
+-------------------------------------------------------
+
+Configurando nodemon
+
+Reseta o servidor automaticamente quando atualiza o arquivo js,
+para não precisar ficar fazendo na mão (parando e iniciando)
+
+- npm install -g nodemon
+- npm install --save-dev nodemon
+
+Enquanto estiver em desenvolvimento vale a pena trocar
+"start" : "node ./bin/server.js" 
+"start" : "nodemon ./bin/server.js" 
+
+-------------------------------------------------------
+
+Fazendo requisições de CRUD para o servidor
+
+- npm install body-parser --save
+- importar o body-parser para o app.js
+
+-------------------------------------------------------
+
+Conexão com banco de dados
+
+O banco usado será um MongoDB online (mongolab)
+Mais informações: https://www.youtube.com/watch?v=UAp91RCIqoU&list=PLHlHvK2lnJndvvycjBqQAbgEDqXxKLoqn&index=13
+
+Estou usando MongoDB Compass Community para monitorar as collections, mas dá pra fazer online tmb
+
+É necessário instalar o pacote mongoose
+- npm install mongoose --save
+
+-------------------------------------------------------

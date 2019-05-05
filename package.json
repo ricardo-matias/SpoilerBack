@@ -1,0 +1,33 @@
+{
+  "name": "SpoilerBack",
+  "version": "1.0.0",
+  "description": "Repositório destinado a estudo do NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardo-matias/SpoilerBack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardo-matias/SpoilerBack/issues"
+  },
+  "homepage": "https://github.com/ricardo-matias/SpoilerBack#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "jsonwebtoken": "^7.4.0",
+    "md5": "^2.2.1",
+    "mongoose": "^5.5.2",
+    "sendgrid": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
