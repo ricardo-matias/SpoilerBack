@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', testRoutes);
-app.use('/usuarios', userRoutes);
+app.use('/users', userRoutes);
 
 // exportando a aplicação
 // toda vez que a classe for instanciada oque vai é o app

@@ -9,7 +9,7 @@ router.get('/:token', authService.authorize, userController.getUser);
 router.get('/:name', userController.getByName);
 router.get('/telefone/:phone', userController.getByPhone)
 
-router.post('/', userController.create);
+router.post('/new', userController.create);
 router.post('/auth', userController.authenticate);
 
 router.put('/:id', userController.update);
