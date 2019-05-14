@@ -65,17 +65,6 @@ exports.update = async (request, response, next) => {
     }
 }
 
-exports.updateFavoriteMovies = async(request, response, next) => {
-    try {
-        await UserRepository.updateFavoriteMovies(request.body);
-        response.status(200).send({
-            message: request.body.movieName + " favoritado com sucesso"
-        })
-    } catch(ex) {
-        throwException(response, "Falha ao adicionar " + request.body.movieName + " aos favoritos", ex);
-    }
-}
-
 exports.delete = async (request, response, next) => {
     try {
         await UserRepository.delete(request.params.id);
@@ -141,6 +130,57 @@ exports.getFavoriteMovies = async(request, response, next) => {
         response.status(200).send(favotireMovies);
     } catch(ex) {
         throwException(response, "Falha ao recuperar filmes favoritos", ex);
+    }
+}
+
+exports.updateFavoriteMovies = async(request, response, next) => {
+    try {
+        await UserRepository.updateFavoriteMovies(request.body);
+        response.status(200).send({
+            message: request.body.movieName + " favoritado com sucesso"
+        })
+    } catch(ex) {
+        throwException(response, "Falha ao adicionar " + request.body.movieName + " aos favoritos", ex);
+    }
+}
+
+exports.getWatchedMovies = async(request, response, next) => {
+    try {
+        let watchedMovies = await UserRepository.getWatchedMovies(request.params.userId);
+        response.status(200).send(watchedMovies);
+    } catch(ex) {
+        throwException(response, "Falha ao recuperar filmes assistidos", ex);
+    }
+}
+
+exports.updateWatchedMovies = async(request, response, next) => {
+    try {
+        await UserRepository.updateWatchedMovies(request.body);
+        response.status(200).send({
+            message: request.body.movieName + " marcado como assistido"
+        })
+    } catch(ex) {
+        throwException(response, "Falha ao marcar " + request.body.movieName + " como assistido", ex);
+    }
+}
+
+exports.getToWatchMovies = async(request, response, next) => {
+    try {
+        let toWatchMovies = await UserRepository.getToWatchMovies(request.params.userId);
+        response.status(200).send(toWatchMovies);
+    } catch(ex) {
+        throwException(response, "Falha ao recuperar filmes assistidos", ex);
+    }
+}
+
+exports.updateToWatchMovies = async(request, response, next) => {
+    try {
+        await UserRepository.updateToWatchMovies(request.body);
+        response.status(200).send({
+            message: request.body.movieName + " adicionado à lista de interesse com sucesso!"
+        })
+    } catch(ex) {
+        throwException(response, "Falha ao adicionar " + request.body.movieName + " à lista de interesse", ex);
     }
 }
 

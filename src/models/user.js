@@ -40,6 +40,16 @@ const schema = new Schema({
     favoriteMovies: [{
         type: Number,
         required: false
+    }],
+
+    watchedMovies: [{
+        type: Number,
+        required: false
+    }],
+
+    toWatchMovies: [{
+        type: Number,
+        required: false
     }]
 
     /*phones: [{

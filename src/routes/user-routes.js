@@ -9,10 +9,14 @@ router.get('/:token', authService.authorize, userController.getSessionUser);
 router.get('/:name', userController.getByName);
 //router.get('/phone/:phone', userController.getByPhone)
 router.get('/favoriteMovies/:userId', authService.authorize, userController.getFavoriteMovies)
+router.get('/watchedMovies/:userId', userController.getWatchedMovies)
+router.get('/toWatchMovies/:userId', userController.getToWatchMovies)
 
 router.post('/new', userController.create);
 router.post('/auth', userController.authenticate);
 router.post('/favoriteMovies', authService.authorize, userController.updateFavoriteMovies)
+router.post('/watchedMovies', userController.updateFavoriteMovies)
+router.post('/toWatchMovies', userController.updateFavoriteMovies)
 
 router.put('/:id', userController.update);
 
