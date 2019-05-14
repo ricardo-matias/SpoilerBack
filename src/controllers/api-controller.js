@@ -17,7 +17,7 @@ exports.populateMovies = async (request, response, next) => {
                 let allMovies = JSON.parse(data);
                 //console.log(allMovies);
                 //console.log(allLines);
-                //MovieRepository.deleteAll();
+                MovieRepository.deleteAll();
                 allMovies.results.forEach(movie => {
                     //console.log(movie);
                     let format_movie = {
