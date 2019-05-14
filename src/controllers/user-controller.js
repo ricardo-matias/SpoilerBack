@@ -30,14 +30,14 @@ exports.getByName = async (request, response, next) => {
     }
 }
 
-exports.getByPhone = async (request, response, next) => {
+/*exports.getByPhone = async (request, response, next) => {
     try {
         let users = await UserRepository.getByPhone(request.params.phone);
         response.status(200).send(users);
     } catch (ex) {
         throwException(response, "Falha ao buscar usuário pelo telefone", ex);
     }
-}
+}*/
 
 exports.create = async (request, response, next) => {
     try {
@@ -62,6 +62,17 @@ exports.update = async (request, response, next) => {
         });
     } catch (ex) {
         throwException(response, "Falha ao atualizar usuário", ex);
+    }
+}
+
+exports.updateFavoriteMovies = async(request, response, next) => {
+    try {
+        await UserRepository.updateFavoriteMovies(request.body);
+        response.status(200).send({
+            message: request.body.movieName + " favoritado com sucesso"
+        })
+    } catch(ex) {
+        throwException(response, "Falha ao adicionar " + request.body.movieName + " aos favoritos", ex);
     }
 }
 
@@ -112,7 +123,7 @@ exports.authenticate = async (request, response, next) => {
     }
 }
 
-exports.getUser = async (request, response, next) => {
+exports.getSessionUser = async (request, response, next) => {
     try {
         let token = request.params.token;
         let data = await authService.decodeToken(token);
@@ -121,6 +132,15 @@ exports.getUser = async (request, response, next) => {
 
     } catch (ex) {
         throwException(response, "Falha ao buscar usuáro pelo token", ex);
+    }
+}
+
+exports.getFavoriteMovies = async(request, response, next) => {
+    try {
+        let favotireMovies = await UserRepository.getFavoriteMovies(request.params.userId);
+        response.status(200).send(favotireMovies);
+    } catch(ex) {
+        throwException(response, "Falha ao recuperar filmes favoritos", ex);
     }
 }
 

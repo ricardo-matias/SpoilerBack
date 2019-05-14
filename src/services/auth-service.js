@@ -13,7 +13,7 @@ exports.decodeToken = async (token) => {
 
 // Autoriza ou proibe as requisições feitas em uma rota a partir de um token passado
 exports.authorize = function(request, response, next) {
-    let token = request.body.token || request.query.token || request.headers['acess_token'];
+    let token = request.body.token || request.query.token || request.headers['access_token'];
 
     if(!token) {
         response.status(401).json({

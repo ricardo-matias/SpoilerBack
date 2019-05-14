@@ -21,6 +21,14 @@ exports.getByPhone = async(request_phone) => {
     });
 }
 
+exports.getFavoriteMovies = async(userId) => {
+    let user = await User.findOne({
+        _id: userId
+    }) 
+
+    return user.favoriteMovies;
+}
+
 exports.create = async(request_data) => {
     let user = new User(request_data);
     await user.save();
@@ -35,6 +43,21 @@ exports.update = async(request_id, request_data) => {
             phones: request_data.phones
         }
     });
+}
+
+exports.updateFavoriteMovies = async (request_data) => {
+    let user = await User.findOne({
+        _id: request_data.userId
+    }) 
+    let array = [request_data.movieId]
+    userFavorites = user.favoriteMovies.concat(array);
+    await User.findOneAndReplace({_id: request_data.userId}, {
+        $set: { 
+            favoriteMovies: userFavorites
+        }
+    })
+
+    console.log(userFavorites);
 }
 
 exports.delete = async(request_id) => {

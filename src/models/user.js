@@ -37,10 +37,15 @@ const schema = new Schema({
         default: true
     },
 
-    phones: [{
-        type: String,
+    favoriteMovies: [{
+        type: Number,
         required: false
     }]
+
+    /*phones: [{
+        type: String,
+        required: false
+    }]*/
 });
 
 module.exports = mongoose.model('User', schema);
