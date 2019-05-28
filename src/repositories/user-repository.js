@@ -76,6 +76,26 @@ exports.updateFavoriteMovies = async (request_data) => {
     console.log(userFavorites);
 }
 
+exports.removeFavoriteMovie = async (request_data) => {
+    let user = await User.findOne({
+        _id: request_data.userId
+    })
+
+    let userFavorites = user.favoriteMovies;
+
+    for (let i = 0; i < user.favoriteMovies.length; i++) {
+        if (request_data.stopId == user.favoriteMovies[i].id)
+            user.favoriteMovies.splice(i, 1);
+    }
+
+    await User.findOneAndUpdate(request_data.userId, {
+        $set: {
+            // favoriteStops: [stop],
+            favoriteStops: userFavorites
+        }
+    });
+}
+
 exports.updateWatchedMovies = async (request_data) => {
     let user = await User.findOne({
         _id: request_data.userId

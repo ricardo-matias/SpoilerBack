@@ -12,6 +12,17 @@ exports.getAll = async (request, response, next) => {
 
 }
 
+exports.updateById = async (request, response, next) => {
+    try {
+        MovieRepository.updateById(request.body);
+        response.status(200).send({
+            message: "Filme " + request.body.title + " atualizado com sucesso"
+        })
+    } catch (ex) {
+        throwException(response, "Falha ao atualizar filme " + request.body.title);
+    }
+}
+
 /**
  * Recebe o objeto response, uma messagem de erro e a exceção gerada e devolve uma messagem 
  * de erro completa para o usuário.
