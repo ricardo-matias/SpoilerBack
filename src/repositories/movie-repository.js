@@ -6,7 +6,7 @@ exports.getAll = async() => {
 }
 
 exports.updateById = async(request_data) => { 
-    await Movie.findOneAndUpdate(request_data.movieId, {
+    await Movie.findOneAndUpdate({_id: request_data.movieId}, {
         $set: {
             movie_id: request_data.movie_id,
             title: request_data.title,
