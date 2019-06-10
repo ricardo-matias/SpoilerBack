@@ -14,9 +14,14 @@ router.get('/toWatchMovies/:userId', userController.getToWatchMovies)
 
 router.post('/new', userController.create);
 router.post('/auth', userController.authenticate);
-router.post('/favoriteMovies', authService.authorize, userController.updateFavoriteMovies)
-router.post('/watchedMovies', userController.updateFavoriteMovies)
-router.post('/toWatchMovies', userController.updateFavoriteMovies)
+
+router.post('/addFavoriteMovie', authService.authorize, userController.addFavoriteMovie)
+router.post('/addWatchedMovie', userController.addWatchedMovie)
+router.post('/addToWatchMovie', userController.addToWatchMovie)
+
+router.post('/removeFavoriteMovie', userController.removeFavoriteMovie)
+router.post('/removeWatchedMovie', userController.removeWatchedMovie)
+router.post('/removeToWatchMovie', userController.removeToWatchMovie)
 
 router.put('/:id', userController.update);
 

@@ -5,6 +5,18 @@ exports.getAll = async() => {
     return await Movie.find();
 }
 
+exports.getById = async(movieId) => {
+    return await Movie.find({
+        movie_id: movieId
+    });
+}
+
+exports.getByTitle = async(movieTitle) => {
+    return await Movie.find({
+        title: movieTitle
+    });
+}
+
 exports.updateById = async(request_data) => { 
     await Movie.findOneAndUpdate({_id: request_data.movieId}, {
         $set: {

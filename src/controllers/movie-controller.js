@@ -12,6 +12,24 @@ exports.getAll = async (request, response, next) => {
 
 }
 
+exports.getById = async (request, response, next) => {
+    try {
+        let movie = await MovieRepository.getById(request.params.movieId);
+        response.status(200).send(movie);
+    } catch (ex) {
+        throwException(response, "Falha ao buscar filme de id " + request.params.movieId, ex);
+    }
+}
+
+exports.getByName = async (request, response, next) => {
+    try {
+        let movie = await MovieRepository.getById(request.params.movieName);
+        response.status(200).send(movie);
+    } catch (ex) {
+        throwException(response, 'Falha ao buscar filme "' + request.params.movieName, ex + '"');
+    }
+}
+
 exports.updateById = async (request, response, next) => {
     try {
         MovieRepository.updateById(request.body);

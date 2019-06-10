@@ -133,14 +133,25 @@ exports.getFavoriteMovies = async(request, response, next) => {
     }
 }
 
-exports.updateFavoriteMovies = async(request, response, next) => {
+exports.addFavoriteMovie = async(request, response, next) => {
     try {
-        await UserRepository.updateFavoriteMovies(request.body);
+        await UserRepository.addFavoriteMovie(request.body);
         response.status(200).send({
             message: request.body.movieName + " favoritado com sucesso"
         })
     } catch(ex) {
         throwException(response, "Falha ao adicionar " + request.body.movieName + " aos favoritos", ex);
+    }
+}
+
+exports.removeFavoriteMovie = async(request, response, next) => {
+    try {
+        await UserRepository.removeFavoriteMovie(request.body);
+        response.status(200).send({
+            message: request.body.movieId + " filme removido com sucesso"
+        })
+    } catch(ex) {
+        throwException(response, "Falha ao remover filme", ex);
     }
 }
 
@@ -153,14 +164,25 @@ exports.getWatchedMovies = async(request, response, next) => {
     }
 }
 
-exports.updateWatchedMovies = async(request, response, next) => {
+exports.addWatchedMovie = async(request, response, next) => {
     try {
-        await UserRepository.updateWatchedMovies(request.body);
+        await UserRepository.addWatchedMovie(request.body);
         response.status(200).send({
             message: request.body.movieName + " marcado como assistido"
         })
     } catch(ex) {
         throwException(response, "Falha ao marcar " + request.body.movieName + " como assistido", ex);
+    }
+}
+
+exports.removeWatchedMovie = async(request, response, next) => {
+    try {
+        await UserRepository.removeWatchedMovie(request.body);
+        response.status(200).send({
+            message: request.body.movieId + " filme removido com sucesso"
+        })
+    } catch(ex) {
+        throwException(response, "Falha ao remover filme", ex);
     }
 }
 
@@ -173,14 +195,25 @@ exports.getToWatchMovies = async(request, response, next) => {
     }
 }
 
-exports.updateToWatchMovies = async(request, response, next) => {
+exports.addToWatchMovie = async(request, response, next) => {
     try {
-        await UserRepository.updateToWatchMovies(request.body);
+        await UserRepository.addToWatchMovie(request.body);
         response.status(200).send({
             message: request.body.movieName + " adicionado à lista de interesse com sucesso!"
         })
     } catch(ex) {
         throwException(response, "Falha ao adicionar " + request.body.movieName + " à lista de interesse", ex);
+    }
+}
+
+exports.removeToWatchMovie = async(request, response, next) => {
+    try {
+        await UserRepository.removeToWatchMovie(request.body);
+        response.status(200).send({
+            message: request.body.movieId + " filme de interesse removido com sucesso"
+        })
+    } catch(ex) {
+        throwException(response, "Falha ao remover filme de interesse", ex);
     }
 }
 

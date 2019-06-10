@@ -51,11 +51,6 @@ const schema = new Schema({
         type: Number,
         required: false
     }]
-
-    /*phones: [{
-        type: String,
-        required: false
-    }]*/
 });
 
 module.exports = mongoose.model('User', schema);
