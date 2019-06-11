@@ -24,6 +24,28 @@ const MovieSchema = new Schema({
         required: false
     },
 
+    comments: [{
+        comment: {
+            type: String,
+            required: false
+        },
+
+        time: {
+            type : Date, 
+            default: Date.now
+        },
+
+        user: {
+            name: {
+                type: String
+            },
+
+            username: {
+                type: String
+            }
+        }
+    }],
+
     photo: {
         type: String,
         required: false

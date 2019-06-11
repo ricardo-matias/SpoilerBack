@@ -17,6 +17,22 @@ exports.getByTitle = async(movieTitle) => {
     });
 }
 
+exports.doComment = async(request_data) => {
+    let array = [request_data];
+    console.log(array);
+    let movie = await Movie.findOne({
+        movie_id: request_data.movieId
+    });
+
+    await Movie.findOneAndUpdate({movie_id: request_data.movieId}, {
+        $set: {
+            comments: movie.comments.concat(array)
+        }
+    });
+
+
+}
+
 exports.updateById = async(request_data) => { 
     await Movie.findOneAndUpdate({_id: request_data.movieId}, {
         $set: {

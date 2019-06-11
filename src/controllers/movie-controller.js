@@ -41,6 +41,17 @@ exports.updateById = async (request, response, next) => {
     }
 }
 
+exports.doComment = async (request, response, next) => {
+    try {
+        MovieRepository.doComment(request.body);
+        response.status(200).send({
+            message: "Comentário realizado com sucesso"
+        })
+    } catch (ex) {
+        throwException(response, "Falha ao comentar" + request.body.title);
+    }
+}
+
 /**
  * Recebe o objeto response, uma messagem de erro e a exceção gerada e devolve uma messagem 
  * de erro completa para o usuário.

@@ -8,5 +8,6 @@ router.get('/getById/:movieId', movieController.getById);
 router.get('/getByName/:movieName', movieController.getByName);
 
 router.post('/updateById', movieController.updateById);
+router.post('/doComment', movieController.doComment);
 
 module.exports = router;
