@@ -37,6 +37,38 @@ exports.isFavoriteMovie = async(userId, movieId) => {
     return isFavorite;
 }
 
+exports.isWatchedMovie = async(userId, movieId) => {
+    let user = await User.findOne({
+        _id: userId
+    })
+
+    let isWatched = false;
+
+    for (let i = 0; i < user.watchedMovies.length; i++) {
+        if(user.watchedMovies[i] == movieId) {
+            isWatched = true;
+        }
+    }
+
+    return isWatched;
+}
+
+exports.isToWatchMovie = async(userId, movieId) => {
+    let user = await User.findOne({
+        _id: userId
+    })
+
+    let isToWatch = false;
+
+    for (let i = 0; i < user.toWatchMovies.length; i++) {
+        if(user.toWatchMovies[i] == movieId) {
+            isToWatch = true;
+        }
+    }
+
+    return isToWatch;
+}
+
 exports.getFavoriteMovies = async (userId) => {
     let user = await User.findOne({
         _id: userId

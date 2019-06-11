@@ -41,6 +41,28 @@ exports.isFavoriteMovie = async(request, response, next) => {
     }
 }
 
+exports.isWatchedMovie = async(request, response, next) => {
+    try {
+        let watched = await UserRepository.isWatchedMovie(request.params.userId, request.params.movieId);
+        response.status(200).send({
+            isWatched: watched
+        });
+    } catch (ex) {
+        throwException(response, "Falha ao consultar se filme é um dos assistidos", ex);
+    }
+}
+
+exports.isToWatchMovie = async(request, response, next) => {
+    try {
+        let toWatch = await UserRepository.isToWatchMovie(request.params.userId, request.params.movieId);
+        response.status(200).send({
+            isToWatch: toWatch
+        });
+    } catch (ex) {
+        throwException(response, "Falha ao consultar se filme é um dos interesses", ex);
+    }
+}
+
 exports.create = async (request, response, next) => {
     try {
         request.body.password = md5(request.body.password + global.ENCRYPT_KEY);
