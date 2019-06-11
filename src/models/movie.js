@@ -42,6 +42,10 @@ const MovieSchema = new Schema({
 
             username: {
                 type: String
+            },
+
+            userId: {
+                type: String
             }
         }
     }],

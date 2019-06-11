@@ -29,8 +29,26 @@ exports.doComment = async(request_data) => {
             comments: movie.comments.concat(array)
         }
     });
+}
 
+exports.removeComment = async(request_data) => {
+    let movie = await Movie.findOne({
+        movie_id: request_data.movieId
+    });
 
+    console.log(request_data)
+
+    for (let i = 0; i < movie.comments.length; i++) {
+        if (movie.comments[i]._id == request_data.commentId) {
+            movie.comments.splice(i, 1);
+        }
+    }
+
+    return await Movie.findOneAndUpdate({movie_id: request_data.movieId}, {
+        $set: {
+            comments: movie.comments
+        }
+    });
 }
 
 exports.updateById = async(request_data) => { 

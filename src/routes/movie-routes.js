@@ -9,5 +9,6 @@ router.get('/getByName/:movieName', movieController.getByName);
 
 router.post('/updateById', movieController.updateById);
 router.post('/doComment', movieController.doComment);
+router.post('/removeComment', movieController.removeComment);
 
 module.exports = router;

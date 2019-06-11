@@ -52,6 +52,17 @@ exports.doComment = async (request, response, next) => {
     }
 }
 
+exports.removeComment = async (request, response, next) => {
+    try {
+        MovieRepository.removeComment(request.body);
+        response.status(200).send({
+            message: "Comentário removido com sucesso"
+        })
+    } catch (ex) {
+        throwException(response, "Falha ao remover comnetário" + request.body.title);
+    }
+}
+
 /**
  * Recebe o objeto response, uma messagem de erro e a exceção gerada e devolve uma messagem 
  * de erro completa para o usuário.
