@@ -86,7 +86,7 @@ exports.getWatchedMovies = async (userId) => {
     return user.watchedMovies;
 }
 
-exports.getToWatchovies = async (userId) => {
+exports.getToWatchMovies = async (userId) => {
     let user = await User.findOne({
         _id: userId
     })
