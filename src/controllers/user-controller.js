@@ -33,7 +33,9 @@ exports.getByName = async (request, response, next) => {
 exports.isFavoriteMovie = async(request, response, next) => {
     try {
         let favorito = await UserRepository.isFavoriteMovie(request.params.userId, request.params.movieId);
-        response.status(200).send(favorito);
+        response.status(200).send({
+            isFavorite: favorito
+        });
     } catch (ex) {
         throwException(response, "Falha ao consultar se filme é favorito", ex);
     }
