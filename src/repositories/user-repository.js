@@ -21,6 +21,22 @@ exports.getByPhone = async (request_phone) => {
     });
 }
 
+exports.isFavoriteMovie = async(userId, movieId) => {
+    let user = await User.findOne({
+        _id: userId
+    })
+
+    let isFavorite = false;
+
+    for (let i = 0; i < user.favoriteMovies.length; i++) {
+        if(user.favoriteMovies[i] == movieId) {
+            isFavorite = true;
+        }
+    }
+
+    return isFavorite;
+}
+
 exports.getFavoriteMovies = async (userId) => {
     let user = await User.findOne({
         _id: userId
@@ -28,6 +44,7 @@ exports.getFavoriteMovies = async (userId) => {
 
     return user.favoriteMovies;
 }
+
 
 exports.getWatchedMovies = async (userId) => {
     let user = await User.findOne({

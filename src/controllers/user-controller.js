@@ -30,14 +30,14 @@ exports.getByName = async (request, response, next) => {
     }
 }
 
-/*exports.getByPhone = async (request, response, next) => {
+exports.isFavoriteMovie = async(request, response, next) => {
     try {
-        let users = await UserRepository.getByPhone(request.params.phone);
-        response.status(200).send(users);
+        let favorito = await UserRepository.isFavoriteMovie(request.params.userId, request.params.movieId);
+        response.status(200).send(favorito);
     } catch (ex) {
-        throwException(response, "Falha ao buscar usuário pelo telefone", ex);
+        throwException(response, "Falha ao consultar se filme é favorito", ex);
     }
-}*/
+}
 
 exports.create = async (request, response, next) => {
     try {

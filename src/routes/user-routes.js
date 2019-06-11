@@ -11,6 +11,7 @@ router.get('/:name', userController.getByName);
 router.get('/favoriteMovies/:userId', authService.authorize, userController.getFavoriteMovies)
 router.get('/watchedMovies/:userId', userController.getWatchedMovies)
 router.get('/toWatchMovies/:userId', userController.getToWatchMovies)
+router.get('/checkFavoriteMovie/:userId/:movieId', userController.isFavoriteMovie)
 
 router.post('/new', userController.create);
 router.post('/auth', userController.authenticate);
