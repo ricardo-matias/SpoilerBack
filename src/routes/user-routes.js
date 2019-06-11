@@ -9,22 +9,22 @@ router.get('/:token', authService.authorize, userController.getSessionUser);
 router.get('/:name', userController.getByName);
 //router.get('/phone/:phone', userController.getByPhone)
 router.get('/favoriteMovies/:userId', authService.authorize, userController.getFavoriteMovies)
-router.get('/watchedMovies/:userId', authService.authorize, userController.getWatchedMovies)
-router.get('/toWatchMovies/:userId', authService.authorize, userController.getToWatchMovies)
-router.get('/checkFavoriteMovie/:userId/:movieId', authService.authorize, userController.isFavoriteMovie)
-router.get('/checkWatchedMovie/:userId/:movieId', authService.authorize, userController.isWatchedMovie)
-router.get('/checkToWatchMovie/:userId/:movieId', authService.authorize, userController.isToWatchMovie)
+router.get('/watchedMovies/:userId', userController.getWatchedMovies)
+router.get('/toWatchMovies/:userId', userController.getToWatchMovies)
+router.get('/checkFavoriteMovie/:userId/:movieId', userController.isFavoriteMovie)
+router.get('/checkWatchedMovie/:userId/:movieId', userController.isWatchedMovie)
+router.get('/checkToWatchMovie/:userId/:movieId', userController.isToWatchMovie)
 
 router.post('/new', userController.create);
 router.post('/auth', userController.authenticate);
 
 router.post('/addFavoriteMovie', authService.authorize, userController.addFavoriteMovie)
-router.post('/addWatchedMovie', authService.authorize, userController.addWatchedMovie)
-router.post('/addToWatchMovie', authService.authorize, userController.addToWatchMovie)
+router.post('/addWatchedMovie', userController.addWatchedMovie)
+router.post('/addToWatchMovie', userController.addToWatchMovie)
 
-router.post('/removeFavoriteMovie', authService.authorize, userController.removeFavoriteMovie)
-router.post('/removeWatchedMovie', authService.authorize, userController.removeWatchedMovie)
-router.post('/removeToWatchMovie', authService.authorize, userController.removeToWatchMovie)
+router.post('/removeFavoriteMovie', userController.removeFavoriteMovie)
+router.post('/removeWatchedMovie', userController.removeWatchedMovie)
+router.post('/removeToWatchMovie', userController.removeToWatchMovie)
 
 router.put('/:id', userController.update);
 
